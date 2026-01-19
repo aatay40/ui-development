@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 1 JS Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="card header">
+        <div>
+          <h1>Day 1 JavaScript Concepts – Live Demo</h1>
+          <p class="muted">Click a demo → see output below. (Also prints to DevTools console.)</p>
+        </div>
+        <div class="row">
+          <button id="clear" class="ghost">Clear output</button>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="card">
+          <h2>Demos</h2>
+          <p class="muted">Teacher notes appear under each button.</p>
+          <div id="demo-list" class="demo-list"></div>
+        </section>
+
+        <section class="card">
+          <h2>Output</h2>
+          <p class="muted">This is what the demo prints.</p>
+          <pre id="output" class="output">Click a demo…</pre>
+        </section>
+      </main>
+
+      <footer class="muted footer">Tip: keep DevTools Console open so students see real console output too.</footer>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
