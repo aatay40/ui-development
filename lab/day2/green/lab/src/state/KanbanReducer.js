@@ -31,6 +31,8 @@ export const initialState = {
 }
 
 export function kanbanReducer(state, action) {
+  // shape of the state is available in initialState, we are storing an object
+
   switch (action.type) {
     case 'ADD_TASK': {
       // TODO(Day2): implement add task
