@@ -4,6 +4,8 @@ import { TaskCard } from './TaskCard.jsx'
 
 export function Column({ column, tasks }) {
   return (
+    // TODO(Day3): wrap the list with <Droppable droppableId={column.id}>
+    // and render provided.placeholder.    
     <Droppable droppableId={column.id}>
       {(provided) => (
         <div ref={provided.innerRef} {...provided.droppableProps}>
@@ -11,13 +13,15 @@ export function Column({ column, tasks }) {
             <div className="font-bold mb-2">{column.title}</div>
 
             {tasks.map((t, idx) => (
-              <TaskCard key={t.id} task={t} index={idx} />
+              <TaskCard key={t.id} 
+                        task={t} 
+                        index={idx} />
             ))}
 
             {provided.placeholder}
-          </div>
+          </div>        
         </div>
-      )}
-    </Droppable>
+      )}        
+    </Droppable>  
   )
 }
