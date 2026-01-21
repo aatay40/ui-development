@@ -16,10 +16,6 @@ const columns = [
 export function Board() {
   const { state, dispatch } = useKanban()
 
-  // TODO(Day4): useOptimistic to track a Set of pending task ids
-  // const [pending, addPending] = React.useOptimistic(new Set(), (set, action) => ...)
-  const pending = new Set()
-
   const onDragEnd = async (result) => {
     if (!result.destination) 
       return
@@ -52,7 +48,7 @@ export function Board() {
         {columns.map((c) => {
           const ids = state.columns[c.id] || []
           const tasks = ids.map((id) => state.tasksById[id]).filter(Boolean)
-          return <Column key={c.id} column={c} tasks={tasks} pending={pending} />
+          return <Column key={c.id} column={c} tasks={tasks} />
         })}
       </div>
     </DragDropContext>

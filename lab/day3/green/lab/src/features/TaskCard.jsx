@@ -5,7 +5,7 @@ import { useKanban } from '../state/KanbanContext.jsx'
 export function TaskCard({ task, index }) {
   const { dispatch } = useKanban()
 
-  // TODO(Day3): wrap body with <Draggable draggableId={task.id} index={index}>
+  // TODO(Day3): wrap body with 
   // attach provided.innerRef, draggableProps, dragHandleProps
 
   const body = (
@@ -35,5 +35,15 @@ export function TaskCard({ task, index }) {
     </div>
   );
 
-  return body  
+  <Draggable draggableId={task.id} index={index}>
+    {(provided) => (
+      <div ref={provided.innerRef} 
+               {...provided.draggableProps} 
+               {...provided.dragHandleProps}>
+        {body}
+      </div>
+    )}
+  </Draggable>
+
+  //return body  
 }

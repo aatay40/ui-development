@@ -29,6 +29,28 @@ export function Board() {
     // id: result.draggableId
     // toColumn: result.destination.droppableId
     // toIndex: result.destination.index
+
+        // TODO(Day3): ignore drop outside and same-position drops
+    if (!result.destination) 
+      return
+
+    // if destination droppableId/index equals source droppableId/index return
+    const samePlace =
+      result.destination.droppableId === result.source.droppableId &&
+      result.destination.index === result.source.index
+
+    if (samePlace) 
+      return
+
+    // TODO(Day3): dispatch MOVE_TASK
+    dispatch({
+      type: 'MOVE_TASK',
+      payload: {
+        id: result.draggableId,
+        toColumn: result.destination.droppableId,
+        toIndex: result.destination.index
+      }
+    })
   }
 
   return (

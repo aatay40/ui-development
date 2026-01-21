@@ -6,8 +6,12 @@ const wait = (ms) => new Promise((res) => setTimeout(res, ms))
 // Deterministic-ish outcome so demos feel consistent:
 function decideCheck1({ income, county, hasCCJ }) {
   // simple rules for teaching:
-  if (hasCCJ) return { outcome: 'DENIED', reason: 'Recent CCJ detected' }
-  if (income >= 35000 && county !== 'HighRisk') return { outcome: 'APPROVED', reason: 'Score OK' }
+  if (hasCCJ) 
+    return { outcome: 'DENIED', reason: 'Recent CCJ detected' }
+
+  if (income >= 35000 && county !== 'HighRisk') 
+    return { outcome: 'APPROVED', reason: 'Score OK' }
+
   return { outcome: 'DOCS_REQUIRED', reason: 'Need payslips + proof of address' }
 }
 
@@ -18,6 +22,9 @@ function decideCheck2({ docsUploaded }) {
 }
 
 export async function runCreditCheck1(applicant) {
+  //check1Calls += 1
+  //console.log(`[mockApi] runCreditCheck1 call #${check1Calls}`)
+
   await wait(900) // simulate latency
   // You can simulate random failure:
   // if (Math.random() < 0.1) throw new Error('Network error')

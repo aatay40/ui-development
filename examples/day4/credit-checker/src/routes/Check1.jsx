@@ -8,6 +8,10 @@ export default function Check1() {
   const { state, dispatch } = useCredit()
   const nav = useNavigate()
 
+
+  // Strict Mode demo: in dev, mount effects can run twice
+  // const ranRef = React.useRef(false)
+
   const run = async () => {
     dispatch({ type: 'CHECK1_START' })
     try {
@@ -20,6 +24,24 @@ export default function Check1() {
       dispatch({ type: 'SET_ERROR', payload: { message: e.message || 'Check 1 failed' } })
     }
   }
+
+  /*
+  React.useEffect(() => {
+    console.log('[Check1] useEffect mount')
+
+    // In StrictMode (dev), this component mounts, unmounts, mounts again.
+    // Without this guard, we'd call the API twice.
+    if (ranRef.current) {
+      console.log('[Check1] skipped duplicate mount run (StrictMode dev)')
+      return
+    }
+    ranRef.current = true
+
+    // Auto-run when the route is reached
+    run('auto')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  */
 
   return (
     <div>

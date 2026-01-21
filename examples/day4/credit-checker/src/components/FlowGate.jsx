@@ -30,6 +30,10 @@ export default function FlowGate({ children }) {
   const { state } = useCredit()
   const loc = useLocation()
 
+  if (loc.pathname.startsWith('/help/')) {
+    return children
+  }
+
   const mustBeAt = allowedPath(state)
   const allowed = loc.pathname === '/' || loc.pathname === mustBeAt
 
