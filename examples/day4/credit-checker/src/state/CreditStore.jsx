@@ -1,6 +1,6 @@
 import React from 'react'
 
-// const STORAGE_KEY = 'creditState_v1'
+const STORAGE_KEY = 'creditState_v2'
 const CreditContext = React.createContext(null)
 
 // Flow statuses: IDLE -> CHECK1_PENDING -> CHECK1_DONE -> DOCS_UPLOADED -> CHECK2_PENDING -> DECISION_READY
@@ -19,7 +19,6 @@ const initialState = {
 }
 
 // if we have data in storage load it, otherwise initialState
-/*
 function loadInitialState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
@@ -31,7 +30,6 @@ function loadInitialState() {
     return initialState
   }
 }
-*/  
 
 function reducer(state, action) {
   switch (action.type) {
@@ -75,15 +73,13 @@ function reducer(state, action) {
 export function CreditProvider({ children }) {
 
   // we are using the useReducer with the option init function parameter, because we want loadInitialState to run
-  // const [state, dispatch] = React.useReducer(reducer, undefined, loadInitialState)
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const [state, dispatch] = React.useReducer(reducer, undefined, loadInitialState)
+  // const [state, dispatch] = React.useReducer(reducer, initialState)
 
   // store state information in localStorage
-  /*
   React.useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
   }, [state])
-  */
 
   const value = React.useMemo(() => ({ state, dispatch }), [state])
 
