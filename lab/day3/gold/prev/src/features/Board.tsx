@@ -12,9 +12,9 @@ const columns: { id: ColumnId; title: string }[] = [
 export function Board() {
   const { state } = useKanban()
 
+  // TODO(Day2,GOLD): map state.columns to tasks
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      // TODO(Day2,GOLD): map state.columns to tasks
 
       {columns.map((c) => {
         const ids = state.columns[c.id] || []

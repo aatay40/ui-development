@@ -35,15 +35,5 @@ export function TaskCard({ task, index }) {
     </div>
   );
 
-  <Draggable draggableId={task.id} index={index}>
-    {(provided) => (
-      <div ref={provided.innerRef} 
-               {...provided.draggableProps} 
-               {...provided.dragHandleProps}>
-        {body}
-      </div>
-    )}
-  </Draggable>
-
-  //return body  
+  return body  
 }

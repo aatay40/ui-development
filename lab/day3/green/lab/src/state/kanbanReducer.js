@@ -71,48 +71,7 @@ export function kanbanReducer(state, action) {
       // - remove id from old column list
       // - insert into new column list at toIndex
       // - update task.columnId and updatedAt
-      
-      // TODO(Day3): implement move across columns + reorder
-      // payload: { id, toColumn, toIndex }
-      const { id, toColumn, toIndex } = action.payload
-      const t = state.tasksById[id]
-      
-      if (!t) 
-        return state
-
-      const fromColumn = t.columnId
-
-      // - remove id from old column list
-      const fromIds = 
-        state.columns[fromColumn]
-          .filter((x) => x !== id)
-
-
-      // base destination list:
-      // - if moving within same column, use fromIds as base
-      // - if moving to different column, use destination column as base
-      const baseTo = fromColumn === toColumn 
-        ? fromIds 
-        : [...state.columns[toColumn]]
-
-
-      // - insert into new column list at toIndex
-      // - update task.columnId and updatedAt
-      const toIds = [...baseTo]
-      toIds.splice(toIndex, 0, id)
-
-      return {
-        ...state,
-        tasksById: {
-          ...state.tasksById,
-          [id]: { ...t, columnId: toColumn, updatedAt: Date.now() }
-        },
-        columns: {
-          ...state.columns,
-          [fromColumn]: fromIds,
-          [toColumn]: toIds
-        }
-      }
+      return state
     }
 
     case 'SET_ERROR':

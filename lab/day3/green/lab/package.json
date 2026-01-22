@@ -9,18 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.0",
-    "@emotion/styled": "^11.13.0",
     "@hello-pangea/dnd": "^16.6.0",
-<<<<<<< HEAD
-    "react": "^18.5.0",
-    "react-dom": "^18.5.0"
-=======
-    "@mui/icons-material": "^5.16.0",
-    "@mui/material": "^5.16.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
->>>>>>> refs/remotes/origin/main
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.0",

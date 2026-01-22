@@ -1,12 +1,23 @@
 import React from 'react'
-import { Draggable } from '@hello-pangea/dnd'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 import type { Task } from '../domain/types'
 import { useKanban } from '../state/KanbanContext'
   
-export function TaskCard({ task, index }: { task: Task; index: number }) {
+export function TaskCard({ task, overlay }: { task: Task; overlay?: boolean }) {
   const { dispatch } = useKanban()
 
+  const sortable = useSortable({ id: task.id, disabled: !!overlay })
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = sortable
+
+  const style: React.CSSProperties = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1
+  }
+
   const body = (
+    // return ref with style, attributes and listeners
     <div className="rounded-lg border bg-white p-3 shadow-sm mb-2">
       <div className="flex items-start gap-2">
         <div className="flex-1">
